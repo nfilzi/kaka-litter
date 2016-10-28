@@ -7,6 +7,8 @@ class CreateOrders < ActiveRecord::Migration[5.0]
       t.text            :observations
       t.float           :total_price_ht
       t.boolean         :first_order
+
+      t.timestamps null: false
     end
   end
 end
