@@ -8,6 +8,7 @@ gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'devise', github: 'plataformatec/devise'
 gem 'redis'
+gem 'simple_enum', '~> 2.0.0'
 
 gem 'sass-rails'
 gem 'jquery-rails'
