@@ -10,5 +10,5 @@ User.create!(first_name: "Nicolas", last_name: "Filzi", email: "nfilzi.webservic
 Company.create!(name: "Filzi Company", billing_address: "4 place Charles Fillion, 75017 Paris", phone_number: "+33678380989", vat_number: "08028402824022", user: User.first)
 
 o = Order.new(company: Company.first, shipping_address: "7 rue de Bel Air, 44000 Nantes", total_price_ht: 100, first_order: true)
-o.paying_with_card!
+o.payed_with_card!
 o.save!
