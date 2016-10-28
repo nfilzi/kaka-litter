@@ -122,14 +122,14 @@
 <row name="designation" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
-<row name="price_per_unit" null="1" autoincrement="0">
+<row name="unit_price" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="676" y="400" name="orders_details">
+<table x="663" y="403" name="order_details">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
