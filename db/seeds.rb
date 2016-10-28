@@ -12,9 +12,12 @@ Company.create!(name: "Filzi Company", billing_address: "4 place Charles Fillion
 Product.create!(designation: "Litter Bag of 176oz", unit_price: 3.4, features: ["100% mineral", "Odorless", "Absorbent", "Clumping"])
 Product.create!(designation: "Box of 6 bags", unit_price: 19.0, features: ["Better storage", "Better display", "Easier to pick from", "Cheaper"])
 
+order = Order.new(company: Company.first, shipping_address: "7 rue de Bel Air, 44000 Nantes", first_order: true)
+order.payed_with_card!
 
+order.order_details.build(quantity: 10, product: Product.first)
+order.order_details.build(quantity: 1, product: Product.last)
 
-
-o = Order.new(company: Company.first, shipping_address: "7 rue de Bel Air, 44000 Nantes", total_price_ht: 100, first_order: true)
-o.payed_with_card!
-o.save!
+order.compute_total_price_ht!
+order.save!
+p order
