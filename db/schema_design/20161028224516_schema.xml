@@ -132,16 +132,16 @@
 <table x="676" y="400" name="orders_details">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
-<default>NULL</default><relation table="products" row="id" />
-<relation table="orders" row="id" />
-</row>
+<default>NULL</default></row>
 <row name="product_id" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
-<default>NULL</default></row>
-<row name="quantity" null="1" autoincrement="0">
-<datatype>TINYINT</datatype>
-<default>NULL</default></row>
+<default>NULL</default><relation table="products" row="id" />
+</row>
 <row name="order_id" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="orders" row="id" />
+</row>
+<row name="quantity" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
