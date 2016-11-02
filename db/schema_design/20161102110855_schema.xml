@@ -82,7 +82,7 @@
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
 <row name="first_order" null="1" autoincrement="0">
-<datatype>TINYINT</datatype>
+<datatype>BOOLEAN</datatype>
 <default>false</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
@@ -106,7 +106,7 @@
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
 <row name="vat_number" null="1" autoincrement="0">
-<datatype>TINYINT</datatype>
+<datatype>VARCHAR</datatype>
 <default>NULL</default></row>
 <row name="salesman_email" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
@@ -115,7 +115,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="673" y="543" name="products">
+<table x="658" y="538" name="products">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
