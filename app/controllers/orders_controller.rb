@@ -4,15 +4,15 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @order.order_details.build
+    @products = Product.all
   end
 
   def create
-    # shipping_address
-    # paying_method
-    # observations
+    raise
   end
 
+  private
   def order_params
-    params.require(:order).permit(:shipping_address, :paying_method, :observations, :order_details_attributes => [:id, :quantity, :product_id])
+    params.require(:order).permit(:shipping_address, :paying_method, :observations, :order_details_attributes => [:product1 => [:quantity], :product2 => [:quantity]])
   end
 end
