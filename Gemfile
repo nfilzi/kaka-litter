@@ -10,6 +10,10 @@ gem 'devise', github: 'plataformatec/devise'
 gem 'redis'
 gem 'simple_enum', '~> 2.0.0'
 
+# activemodel-serializers-xml out of rails now, draper needs it
+gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
+gem 'draper'
+
 gem 'sass-rails'
 gem 'jquery-rails'
 gem 'uglifier'

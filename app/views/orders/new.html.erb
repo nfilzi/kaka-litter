@@ -1,0 +1,15 @@
+<h2>Enter your order information please</h2>
+
+<%= simple_form_for @order do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :shipping_address, required: true %>
+    <%= f.input :paying_method, collection: order.paying_methods, required: true %>
+    <%= f.input :observations %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Continue" %>
+  </div>
+<% end %>
