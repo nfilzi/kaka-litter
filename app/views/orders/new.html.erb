@@ -1,0 +1,32 @@
+<h2 style="text-align: center">Enter your order information please</h2>
+
+<%= simple_form_for @order do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs" style="width: 600px; margin: 50px auto">
+    <%= f.input :shipping_address, required: true %>
+    <%= f.input :paying_method, collection: order.paying_methods, required: true %>
+    <%= f.input :observations %>
+    <br>
+    <% @products.each_with_index do |product, index| %>
+      <div class="product">
+        <h3><%= product.designation %></h3>
+        <p>Price: <%= product.unit_price %></p>
+        <ul class="list-unstyled">
+          <% product.features.each do |feature| %>
+            <li><i class="fa fa-thumbs-o-up" aria-hidden="true" style="margin-right: 10px"></i><%= feature %></li>
+          <% end %>
+        </ul>
+        <%= f.simple_fields_for :order_details_attributes do |order_detail| %>
+          <%= order_detail.simple_fields_for "product#{product.id}" do |quantity| %>
+            <%= quantity.input :quantity, as: :integer %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="form-actions" style="text-align: center; margin: 30px 0">
+    <%= f.button :submit, "Continue" %>
+  </div>
+<% end %>
