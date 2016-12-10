@@ -1,4 +1,15 @@
 GIT
+  remote: git://github.com/audionerd/draper.git
+  revision: e816e0e5876b76c648c0928f1c3f2aa2c7a3d1f2
+  branch: rails5
+  specs:
+    draper (2.1.0)
+      actionpack (>= 3.0)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
+      request_store (~> 1.0)
+
+GIT
   remote: git://github.com/plataformatec/devise.git
   revision: 8a4d610c587ca7d0f5ce40d9a4a28a2da717f1e9
   specs:
@@ -77,11 +88,6 @@ GEM
     coderay (1.1.1)
     concurrent-ruby (1.0.2)
     debug_inspector (0.0.2)
-    draper (2.1.0)
-      actionpack (>= 3.0)
-      activemodel (>= 3.0)
-      activesupport (>= 3.0)
-      request_store (~> 1.0)
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.14)
@@ -210,7 +216,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass
   devise!
-  draper
+  draper!
   figaro
   font-awesome-sass
   jbuilder (~> 2.0)

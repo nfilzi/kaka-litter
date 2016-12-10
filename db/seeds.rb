@@ -15,9 +15,10 @@ Product.create!(designation: "Box of 6 bags", unit_price: 19.0, features: ["Bett
 order = Order.new(company: Company.first, shipping_address: "7 rue de Bel Air, 44000 Nantes", first_order: true)
 order.payed_with_card!
 
-order.order_details.build(quantity: 10, product: Product.first)
-order.order_details.build(quantity: 1, product: Product.last)
+order.order_details.build(quantity: 10, product_id: Product.first.id)
+order.order_details.build(quantity: 1, product_id: Product.last.id)
 
 order.compute_total_price_ht!
 order.save!
+puts "One order was saved during seed"
 p order

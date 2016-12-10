@@ -4,25 +4,26 @@
   <%= f.error_notification %>
 
   <div class="form-inputs" style="width: 600px; margin: 50px auto">
+    <%= f.association :company, required: true, collection: @companies %>
     <%= f.input :shipping_address, required: true %>
     <%= f.input :paying_method, collection: order.paying_methods, required: true %>
     <%= f.input :observations %>
+
     <br>
-    <% @products.each_with_index do |product, index| %>
-      <div class="product">
-        <h3><%= product.designation %></h3>
-        <p>Price: <%= product.unit_price %></p>
-        <ul class="list-unstyled">
-          <% product.features.each do |feature| %>
-            <li><i class="fa fa-thumbs-o-up" aria-hidden="true" style="margin-right: 10px"></i><%= feature %></li>
-          <% end %>
-        </ul>
-        <%= f.simple_fields_for :order_details_attributes do |order_detail| %>
-          <%= order_detail.simple_fields_for "product#{product.id}" do |quantity| %>
-            <%= quantity.input :quantity, as: :integer %>
-          <% end %>
-        <% end %>
-      </div>
+    <%= f.simple_fields_for "order_details" do |order_detail| %>
+      <% @products.each_with_index do |product, index| %>
+        <div class="product">
+          <h3><%= product.designation %></h3>
+          <p>Price: <%= product.unit_price %></p>
+          <ul class="list-unstyled">
+            <% product.features.each do |feature| %>
+              <li><i class="fa fa-thumbs-o-up" aria-hidden="true" style="margin-right: 10px"></i><%= feature %></li>
+            <% end %>
+          </ul>
+          <%= order_detail.input :quantity, as: :integer %>
+          <%= order_detail.input :product_id, as: :hidden, input_html: {value: product.id} %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 
