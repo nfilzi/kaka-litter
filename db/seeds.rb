@@ -6,6 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+OrderDetail.destroy_all
+Product.destroy_all
+Order.destroy_all
+Company.destroy_all
+User.destroy_all
+
+
 User.create!(first_name: "Nicolas", last_name: "Filzi", email: "nfilzi.webservices@gmail.com", password: "password", phone_number: "+33678380989")
 Company.create!(name: "Filzi Company", billing_address: "4 place Charles Fillion, 75017 Paris", phone_number: "+33678380989", vat_number: "08028402824022", user: User.first)
 
