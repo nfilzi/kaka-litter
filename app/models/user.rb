@@ -5,5 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :companies
+  has_many :orders, through: :companies
   validates :first_name, :last_name, :phone_number, presence: true
+  
+  def no_orders?
+    orders.empty?
+  end
 end
