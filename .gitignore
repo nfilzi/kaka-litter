@@ -8,3 +8,6 @@ public/assets
 
 # Ignore application configuration
 /config/application.yml
+
+# Ignore config_*.json for Google Drive API config
+/config/initializers/google_drive_api
