@@ -93,7 +93,7 @@ form {
 .form-actions {
   margin: auto;
   max-width: 500px;
-  padding: 0px 20px
+  padding: 0px 20px;
 }
 
 label {
@@ -117,7 +117,7 @@ textarea {
   font-weight: bold;
   height: 50px;
   padding: 0px 20px;
-  width: 100%
+  width: 100%;
 }
 
 textarea {
@@ -259,4 +259,10 @@ div.alert > button {
 .form-actions {
   margin-top: 0px;
   margin-bottom: 50px
+}
+
+@media screen and (min-width: 550px) {
+  .form-inputs {
+    min-width: 500px
+  }
 }
