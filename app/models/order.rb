@@ -1,9 +1,11 @@
 class Order < ApplicationRecord
   belongs_to :company
-  has_many :order_details, inverse_of: :order
-  accepts_nested_attributes_for :order_details
+  belongs_to :user
 
-  delegate :user, to: :company, allow_nil: true
+  has_many :order_details, inverse_of: :order
+  belongs_to :shipping_address
+  
+  accepts_nested_attributes_for :order_details
   
   validates :company, :shipping_address, :total_price_ht, presence: true
   
