@@ -95,11 +95,11 @@
 <row name="company_name" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
-<row name="billing_address" null="1" autoincrement="0">
+<row name="company_phone_number" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
-<row name="company_number" null="1" autoincrement="0">
-<datatype>VARCHAR</datatype>
+<row name="billing_address" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
 <default>NULL</default></row>
 <row name="vat_number" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
@@ -160,7 +160,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="257" y="292" name="addresses">
+<table x="253" y="322" name="shipping_addresses">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
