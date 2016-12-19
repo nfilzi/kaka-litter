@@ -9,6 +9,9 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
   <body>
+    <nav>
+      <%= image_tag("kaka_logotype.svg", height: '28') %>
+    </nav>
     <%- # render 'shared/navbar' -%>
     <%= render 'shared/flashes' %>
     <%= yield %>

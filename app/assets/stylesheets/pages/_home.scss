@@ -94,17 +94,17 @@ form {
 }
 
 label {
-  color: $red;
+  color: $blue;
   display: block;
   font-weight: bold;
   margin: 10px 0px 5px;
 }
 
 input {
-  border: 1px solid $red;
+  border: 1px solid $blue;
   border-radius: 10px;
   box-sizing: border-box;
-  color: $blue;
+  color: $red;
   font-size: 20px;
   font-weight: bold;
   height: 50px;
@@ -114,6 +114,7 @@ input {
 
 input[type="submit"] {
   background-color: $red;
+  border-color: $red;
   color: #FFF;
   font-family: "SignPainter";
   font-size: 30px;
@@ -163,6 +164,7 @@ button {
 }
 
 .qty-selector > input {
+  border-color: $red;
   border-radius: 0px;
   height: 40px;
   padding: 0px;
@@ -233,4 +235,9 @@ footer > p {
 
 .center {
   text-align: center
+}
+
+div.alert > button {
+  background: none;
+  border: 0px;
 }
