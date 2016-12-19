@@ -61,17 +61,22 @@
 <part>id</part>
 </key>
 </table>
-<table x="701" y="202" name="orders">
+<table x="688" y="226" name="orders">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
+<row name="user_id" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="users" row="id" />
+</row>
 <row name="company_id" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default><relation table="companies" row="id" />
 </row>
-<row name="shipping_address" null="1" autoincrement="0">
+<row name="shipping_address_id" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
-<default>NULL</default></row>
+<default>NULL</default><relation table="shipping_addresses" row="id" />
+</row>
 <row name="paying_method" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
@@ -88,7 +93,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="456" y="73" name="companies">
+<table x="450" y="90" name="companies">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -111,7 +116,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="658" y="538" name="products">
+<table x="631" y="581" name="products">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -125,7 +130,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="663" y="403" name="order_details">
+<table x="699" y="448" name="order_details">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -160,7 +165,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="253" y="322" name="shipping_addresses">
+<table x="228" y="370" name="shipping_addresses">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
