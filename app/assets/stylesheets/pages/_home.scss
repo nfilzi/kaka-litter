@@ -2,3 +2,188 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
+
+ /* KAKA LITTER CSS */
+
+/** FONTS **/
+@font-face {
+  font-family: 'SignPainter';
+  src:url('SignPainter.ttc');
+}
+
+
+/** GLOBAL **/
+body {
+  background-color: #FFF;
+  color: #3A4287;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue", "Helvetica", sans-serif;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 0;
+  margin: 0px
+}
+
+nav {
+  background-color: #FFF;
+  padding: 10px 0px;
+  text-align: center;
+  top: 0px;
+  width: 100%
+}
+
+h1 {
+  color: #ED1C24;
+  font-family: "SignPainter";
+  font-size: 40px;
+  margin: 25px 0px 0px 0px;
+  text-align: center
+}
+
+h2 {
+  color: #3A4287;
+  font-family: "HelveticaNeue-CondensedBold", "Helvetica Neue", "Helvetica", sans-serif;
+  font-size: 25px;
+  margin: 10px 0px
+}
+
+p {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue", "Helvetica", sans-serif;
+  margin: auto;
+  max-width: 500px;
+  padding: 20px
+}
+
+ul {
+  list-style-image: asset-url('paw-list.svg');
+  list-style-position: bottom;
+  margin: 0px;
+  padding: 0px 0px 0px 30px
+}
+
+ul.paragraph {
+  font-weight: bold;
+  margin-top: 10px;
+  padding-left: 40px
+}
+
+li {
+  font-family: "HelveticaNeue-Thin", "Helvetica Neue", "Helvetica", sans-serif
+}
+
+img.center {
+    display: block;
+    margin: 20px auto
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+button {
+  background-color: #ED1C24;
+  border: 1px solid #ED1C24;
+  box-sizing: border-box;
+  color: #FFF;
+  height: 40px;
+  font-size: 20px;
+  margin: 0px;
+  padding: 0px;
+  width: 50px;
+}
+
+.button-left {
+  border-radius: 10px 0px 0px 10px;
+}
+
+.button-right {
+  border-radius: 0px 10px 10px 0px;
+}
+
+.order-button {
+  border-radius: 10px;
+  font-family: "SignPainter";
+  font-size: 30px;
+  height: 50px;
+  padding: 10px;
+  width: 200px;
+}
+
+.order-button-div {
+  display: flex;
+  justify-content: center;
+  margin: 30px;
+}
+
+.qty-selector > input {
+  border: 1px solid #ED1C24;
+  box-sizing: border-box;
+  color: #3A4287;
+  font-size: 20px;
+  height: 40px;
+  padding: 0px;
+  text-align: center;
+  width: 50px;
+}
+
+footer {
+  margin: 0;
+  margin-bottom: 20px;
+  text-align: center;
+  width: 100%
+}
+
+footer > p {
+  color: #ED1C24;
+  font-family: "HelveticaNeue-Thin", "Helvetica Neue", "Helvetica", sans-serif;
+  font-size: 18px;
+  letter-spacing: 4px;
+  line-height: 20px;
+  padding: 10px 20px;
+}
+
+/** PRODUCT DIVS **/
+
+.product {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin: 20px;
+}
+
+.products-container {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 800px;
+  margin: auto
+}
+
+.product-element {
+  display: flex;
+  margin: auto;
+  margin-bottom: 20px;
+  max-width: 500px
+}
+
+.product-image {
+  width: 110px;
+}
+
+.product-specs {
+  padding-left: 15px
+}
+
+.qty-selector {
+  display: flex;
+  justify-content: center;
+}
+
+/** LIST DIV **/
+
+.list-div {
+  margin: auto;
+  max-width: 500px;
+}
