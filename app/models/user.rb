@@ -5,7 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :user_companies
   has_many :companies, through: :user_companies
-  has_many :orders, through: :companies
+  has_many :orders
+  has_many :shipping_addresses
+
   validates :first_name, :last_name, :phone_number, presence: true
   
   def no_orders?

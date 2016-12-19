@@ -38,7 +38,7 @@
     <type label="SET" length="1" sql="SET" quote=""/>
     <type label="Bit" length="0" sql="bit" quote=""/>
   </group>
-</datatypes><table x="286" y="213" name="users">
+</datatypes><table x="76" y="187" name="users">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -61,17 +61,22 @@
 <part>id</part>
 </key>
 </table>
-<table x="701" y="202" name="orders">
+<table x="688" y="226" name="orders">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
+<row name="user_id" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="users" row="id" />
+</row>
 <row name="company_id" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default><relation table="companies" row="id" />
 </row>
-<row name="shipping_address" null="1" autoincrement="0">
+<row name="shipping_address_id" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
-<default>NULL</default></row>
+<default>NULL</default><relation table="shipping_addresses" row="id" />
+</row>
 <row name="paying_method" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
@@ -88,22 +93,18 @@
 <part>id</part>
 </key>
 </table>
-<table x="497" y="53" name="companies">
+<table x="450" y="90" name="companies">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
-<row name="user_id" null="1" autoincrement="0">
-<datatype>TINYINT</datatype>
-<default>NULL</default><relation table="users" row="id" />
-</row>
 <row name="company_name" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
-<row name="billing_address" null="1" autoincrement="0">
+<row name="company_phone_number" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
-<row name="company_number" null="1" autoincrement="0">
-<datatype>VARCHAR</datatype>
+<row name="billing_address" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
 <default>NULL</default></row>
 <row name="vat_number" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
@@ -115,7 +116,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="658" y="538" name="products">
+<table x="631" y="581" name="products">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -129,7 +130,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="663" y="403" name="order_details">
+<table x="699" y="448" name="order_details">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -142,6 +143,41 @@
 <default>NULL</default><relation table="orders" row="id" />
 </row>
 <row name="quantity" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="234" y="69" name="user_companies">
+<row name="id" null="1" autoincrement="1">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="user_id" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="users" row="id" />
+</row>
+<row name="company_id" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="companies" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="228" y="370" name="shipping_addresses">
+<row name="id" null="1" autoincrement="1">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="user_id" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="users" row="id" />
+</row>
+<row name="company_id" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="companies" row="id" />
+</row>
+<row name="designation" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
