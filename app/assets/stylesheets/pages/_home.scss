@@ -15,7 +15,7 @@
 /** GLOBAL **/
 body {
   background-color: #FFF;
-  color: #3A4287;
+  color: $blue;
   font-family: "HelveticaNeue-Light", "Helvetica Neue", "Helvetica", sans-serif;
   font-size: 20px;
   line-height: 30px;
@@ -32,7 +32,7 @@ nav {
 }
 
 h1 {
-  color: #ED1C24;
+  color: $red;
   font-family: "SignPainter";
   font-size: 40px;
   margin: 25px 0px 0px 0px;
@@ -40,10 +40,17 @@ h1 {
 }
 
 h2 {
-  color: #3A4287;
+  color: $blue;
   font-family: "HelveticaNeue-CondensedBold", "Helvetica Neue", "Helvetica", sans-serif;
   font-size: 25px;
   margin: 10px 0px
+}
+
+a,
+a:hover,
+a:active,
+a:visited {
+  color: $blue
 }
 
 p {
@@ -81,9 +88,48 @@ form {
   justify-content: center;
 }
 
+.simple_form {
+  margin: auto;
+  max-width: 500px;
+}
+
+label {
+  color: $red;
+  display: block;
+  font-weight: bold;
+  margin: 10px 0px 5px;
+}
+
+input {
+  border: 1px solid $red;
+  border-radius: 10px;
+  box-sizing: border-box;
+  color: $blue;
+  font-size: 20px;
+  font-weight: bold;
+  height: 50px;
+  padding: 0px 20px;
+  width: 100%
+}
+
+input[type="submit"] {
+  background-color: $red;
+  color: #FFF;
+  font-family: "SignPainter";
+  font-size: 30px;
+  height: 50px;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+input[type="checkbox"] {
+  height: auto;
+  width: auto
+}
+
 button {
-  background-color: #ED1C24;
-  border: 1px solid #ED1C24;
+  background-color: $red;
+  border: 1px solid $red;
   box-sizing: border-box;
   color: #FFF;
   height: 40px;
@@ -117,10 +163,7 @@ button {
 }
 
 .qty-selector > input {
-  border: 1px solid #ED1C24;
-  box-sizing: border-box;
-  color: #3A4287;
-  font-size: 20px;
+  border-radius: 0px;
   height: 40px;
   padding: 0px;
   text-align: center;
@@ -135,7 +178,7 @@ footer {
 }
 
 footer > p {
-  color: #ED1C24;
+  color: $red;
   font-family: "HelveticaNeue-Thin", "Helvetica Neue", "Helvetica", sans-serif;
   font-size: 18px;
   letter-spacing: 4px;
@@ -186,4 +229,8 @@ footer > p {
 .list-div {
   margin: auto;
   max-width: 500px;
+}
+
+.center {
+  text-align: center
 }
