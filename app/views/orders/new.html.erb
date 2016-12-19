@@ -2,15 +2,15 @@
 
 <%= simple_form_for @order do |f| %>
   <%= f.error_notification %>
-  <div class="form-inputs">
-    <%= f.association :company, required: true, collection: @companies %>
-    <%= f.input :shipping_address, required: true %>
+
+  <div class="form-inputs" style="width: 600px; margin: 50px auto">
+    <%= f.association :shipping_address, collection: @shipping_addresses, label_method: :designation, include_blank: false %>
     <%= f.input :observations %>
   </div>
-    <br>
+  <br>
+  <% @products.each_with_index do |product, index| %>
     <%= f.simple_fields_for "order_details" do |order_detail| %>
-    <div class="products-container">
-      <% @products.each_with_index do |product, index| %>
+    <div class="products-container">  
         <div class="product">
           <div class="product-element">
             <div class="product-image">
