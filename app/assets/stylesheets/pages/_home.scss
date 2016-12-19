@@ -89,9 +89,11 @@ form {
   justify-content: center;
 }
 
-.simple_form {
+.form-inputs,
+.form-actions {
   margin: auto;
   max-width: 500px;
+  padding: 0px 20px
 }
 
 label {
