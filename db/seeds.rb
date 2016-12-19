@@ -51,8 +51,6 @@ litter_bag = Product.create!(designation: "Litter Bag of 176oz", unit_price: 3.4
 box_of_six = Product.create!(designation: "Box of 6 bags", unit_price: 19.0, features: ["Better storage", "Better display", "Easier to pick from", "Cheaper"])
 
 puts "Creating orders for both companies..."
-means_of_payment = Order.paying_methods.keys
-
 [filzi, pariente].each do |user|
   rand(5..10).times do |step|
     rand_company          = user.companies.sample
@@ -62,9 +60,6 @@ means_of_payment = Order.paying_methods.keys
 
     order                 = Order.new(user: user, company: rand_company, shipping_address: rand_shipping_address)
     order.first_order! if user.no_orders?
-
-    paying_method         = "payed_with_" + means_of_payment.sample + "!"
-    order.send(paying_method.to_sym)
 
 
     order.order_details.build(quantity: rand(1..4), product: box_of_six)
