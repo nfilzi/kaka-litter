@@ -38,7 +38,7 @@
     <type label="SET" length="1" sql="SET" quote=""/>
     <type label="Bit" length="0" sql="bit" quote=""/>
   </group>
-</datatypes><table x="76" y="187" name="users">
+</datatypes><table x="86" y="276" name="users">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -61,14 +61,10 @@
 <part>id</part>
 </key>
 </table>
-<table x="688" y="226" name="orders">
+<table x="528" y="209" name="orders">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
-<row name="user_id" null="1" autoincrement="0">
-<datatype>TINYINT</datatype>
-<default>NULL</default><relation table="users" row="id" />
-</row>
 <row name="company_id" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default><relation table="companies" row="id" />
@@ -93,10 +89,14 @@
 <part>id</part>
 </key>
 </table>
-<table x="450" y="90" name="companies">
+<table x="259" y="20" name="companies">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
+<row name="user_id" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="users" row="id" />
+</row>
 <row name="company_name" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
@@ -116,7 +116,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="631" y="581" name="products">
+<table x="510" y="582" name="products">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -130,7 +130,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="699" y="448" name="order_details">
+<table x="622" y="444" name="order_details">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -149,30 +149,10 @@
 <part>id</part>
 </key>
 </table>
-<table x="234" y="69" name="user_companies">
+<table x="243" y="445" name="shipping_addresses">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
-<row name="user_id" null="1" autoincrement="0">
-<datatype>TINYINT</datatype>
-<default>NULL</default><relation table="users" row="id" />
-</row>
-<row name="company_id" null="1" autoincrement="0">
-<datatype>TINYINT</datatype>
-<default>NULL</default><relation table="companies" row="id" />
-</row>
-<key type="PRIMARY" name="">
-<part>id</part>
-</key>
-</table>
-<table x="228" y="370" name="shipping_addresses">
-<row name="id" null="1" autoincrement="1">
-<datatype>TINYINT</datatype>
-<default>NULL</default></row>
-<row name="user_id" null="1" autoincrement="0">
-<datatype>TINYINT</datatype>
-<default>NULL</default><relation table="users" row="id" />
-</row>
 <row name="company_id" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default><relation table="companies" row="id" />
