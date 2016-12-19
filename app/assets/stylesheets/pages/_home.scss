@@ -35,11 +35,12 @@ h1 {
   color: $red;
   font-family: "SignPainter";
   font-size: 40px;
-  margin: 25px 0px 0px 0px;
+  margin: 25px 0px 20px 0px;
   text-align: center
 }
 
-h2 {
+h2,
+.total-price {
   color: $blue;
   font-family: "HelveticaNeue-CondensedBold", "Helvetica Neue", "Helvetica", sans-serif;
   font-size: 25px;
@@ -57,7 +58,7 @@ p {
   font-family: "HelveticaNeue-Light", "Helvetica Neue", "Helvetica", sans-serif;
   margin: auto;
   max-width: 500px;
-  padding: 20px
+  padding: 0px 20px 20px
 }
 
 ul {
@@ -100,7 +101,12 @@ label {
   margin: 10px 0px 5px;
 }
 
-input {
+input,
+select,
+textarea {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0pt;
+  background-color: #FFF;
   border: 1px solid $blue;
   border-radius: 10px;
   box-sizing: border-box;
@@ -110,6 +116,12 @@ input {
   height: 50px;
   padding: 0px 20px;
   width: 100%
+}
+
+textarea {
+  resize: none;
+  height: 180px;
+  padding: 20px
 }
 
 input[type="submit"] {
@@ -163,7 +175,7 @@ button {
   margin: 30px;
 }
 
-.qty-selector > input {
+.qty-selector input {
   border-color: $red;
   border-radius: 0px;
   height: 40px;
@@ -240,4 +252,9 @@ footer > p {
 div.alert > button {
   background: none;
   border: 0px;
+}
+
+.form-actions {
+  margin-top: 0px;
+  margin-bottom: 50px
 }
