@@ -1,6 +1,5 @@
 class Order < ApplicationRecord
   belongs_to :company
-  belongs_to :user
 
   has_many :order_details, inverse_of: :order
   belongs_to :shipping_address

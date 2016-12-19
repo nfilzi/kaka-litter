@@ -22,13 +22,18 @@ pariente_co_ship_and_bill_address = "14 allée Eric Chaber, 75013 Paris"
 
 puts "Adding addresses (billing and shipping) to companies..."
 filzi_co.shipping_addresses.build(designation: filzi_co_ship_and_bill_address)
+filzi_co.shipping_addresses.build(designation: "53 Lexington Avenue, Brooklyn, NY 11238, États-Unis")
 pariente_co.shipping_addresses.build(designation: pariente_co_ship_and_bill_address)
+pariente_co.shipping_addresses.build(designation: "160 Mott Street, New York, NY 10013, États-Unis")
+
 
 filzi_co.billing_address    = filzi_co_ship_and_bill_address
 pariente_co.billing_address = pariente_co_ship_and_bill_address
 
-filzi_co.save
-pariente_co.save
+# binding.pry
+
+filzi_co.save!
+pariente_co.save!
 
 puts "Companies created!"
 
