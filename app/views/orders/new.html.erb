@@ -1,4 +1,4 @@
-<h2 style="text-align: center">Enter your order information please</h2>
+<h1>Fill in your order information</h2>
 
 <%= simple_form_for @order do |f| %>
   <%= f.error_notification %>
@@ -6,26 +6,33 @@
   <div class="form-inputs" style="width: 600px; margin: 50px auto">
     <%= f.association :shipping_address, collection: @shipping_addresses, label_method: :designation, include_blank: false %>
     <%= f.input :observations %>
-
-    <br>
-    <% @products.each_with_index do |product, index| %>
-      <%= f.simple_fields_for "order_details" do |order_detail| %>
+  </div>
+  <br>
+  <% @products.each_with_index do |product, index| %>
+    <%= f.simple_fields_for "order_details" do |order_detail| %>
+    <div class="products-container">  
         <div class="product">
-          <h3><%= product.designation %></h3>
-          <p>Price: <%= product.unit_price %></p>
-          <ul class="list-unstyled">
-            <% product.features.each do |feature| %>
-              <li><i class="fa fa-thumbs-o-up" aria-hidden="true" style="margin-right: 10px"></i><%= feature %></li>
-            <% end %>
-          </ul>
-          <%= order_detail.input :quantity, as: :integer %>
-          <%= order_detail.input :product_id, as: :hidden, input_html: {value: product.id} %>  
+          <div class="product-element">
+            <div class="product-image">
+              <%= image_tag "#{product.designation}.png" %>
+            </div>
+            <div class="product-specs">
+              <h2><%= product.designation %></h2>
+              <p class="price">Unit price: <b>$<%= product.unit_price %></b></p>
+              <div class="qty-selector">
+            <button class="button-left">-</button>
+            <%= order_detail.input :quantity, as: :integer, label: false %>
+            <button class="button-right">+</button>
+          </div>
+            </div>
+          </div>
+          <%= order_detail.input :product_id, as: :hidden, input_html: {value: product.id} %>
         </div>
       <% end %>
     <% end %>
   </div>
-
-  <div class="form-actions" style="text-align: center; margin: 30px 0">
-    <%= f.button :submit, "Continue" %>
+  <div class="form-actions">
+    <p class="total-price">Total Price: $<b>75</b></p>
+    <%= f.button :submit, "Confirm Order" %>
   </div>
 <% end %>
