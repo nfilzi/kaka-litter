@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161028223839) do
+ActiveRecord::Schema.define(version: 20161212085501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "companies", force: :cascade do |t|
-    t.integer  "user_id"
     t.string   "name"
     t.string   "billing_address"
     t.string   "phone_number"
@@ -24,7 +23,6 @@ ActiveRecord::Schema.define(version: 20161028223839) do
     t.string   "salesman_email"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.index ["user_id"], name: "index_companies_on_user_id", using: :btree
   end
 
   create_table "order_details", force: :cascade do |t|
@@ -55,6 +53,15 @@ ActiveRecord::Schema.define(version: 20161028223839) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "user_companies", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_user_companies_on_company_id", using: :btree
+    t.index ["user_id"], name: "index_user_companies_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -75,8 +82,9 @@ ActiveRecord::Schema.define(version: 20161028223839) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "companies", "users"
   add_foreign_key "order_details", "orders"
   add_foreign_key "order_details", "products"
   add_foreign_key "orders", "companies"
+  add_foreign_key "user_companies", "companies"
+  add_foreign_key "user_companies", "users"
 end
