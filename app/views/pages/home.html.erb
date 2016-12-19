@@ -1,2 +1,77 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<form>
+  <!-- PRODUCT CONTAINER -->
+  <div class="products-container">
+    <!-- FIRST PRODUCT -->
+    <div class="product">
+      <div class="product-element">
+        <div class="product-image">
+          <%= image_tag "litter_bag.png" %>
+        </div>
+        <div class="product-specs">
+          <h2>Litter Bag of 176oz</h2>
+          <ul>
+            <li>100% mineral</li>
+            <li>Odorless</li>
+            <li>Absorbent</li>
+            <li>Clumping</li>
+          </ul>
+        </div>
+      </div>
+      <div class="qty-selector">
+        <button class="button-left">-</button>
+        <input type="text"></input>
+        <button class="button-right">+</button>
+      </div>
+    </div>
+    <!-- SECOND PRODUCT -->
+    <div class="product">
+      <div class="product-element">
+        <div class="product-image">
+          <%= image_tag "litter_box.png" %>
+        </div>
+        <div class="product-specs">
+          <h2>Box of 6 Bags</h2>
+          <ul>
+            <li>Better storage</li>
+            <li>Better display</li>
+            <li>Easier to pick from</li>
+            <li>Cheaper</li>
+          </ul>
+        </div>
+      </div>
+      <div class="qty-selector">
+        <button class="button-left">-</button>
+        <input type="text"></input>
+        <button class="button-right">+</button>
+      </div>
+    </div>
+  </div>
+  <div class="order-button-div">
+    <button class="order-button">Order Now</button>
+  </div>
+</form>
+<!-- DESCRIPTION -->
+<h1>Krazy Kat Litter</h1>
+<p>
+  KAKA is nothing but cat litter, opting for a <b>clear-cut</b> and <b>ultra-natural</b> ethical positioning rather than a generic product.
+</p>
+<h1>Who are we?</h1>
+<p>
+  We are a <b>family-owned company</b> based in <b>Normandy, France</b>. We have been mainly extracting minerals <b>since 1927</b>.
+</p> 
+<p>
+  We are passionate about what we do and always looking for <b>simple solutions</b>. We are committed to use a process that recovers essential components from minerals, assuring a <b>responsible production</b>:
+</p>
+<div class="list-div">
+  <ul class="paragraph">
+    <li>reliable</li>
+    <li>low carbon-footprint</li>
+    <li>bio-compatible</li>
+  </ul>
+</div>
+<%= image_tag("france_map.png", width: '300', height: '300', class: 'center') %>
+<footer>
+  <p>KAKA LITTER — 202-555-0154</p>
+  <p>CONTACT@KAKA-LITTER.COM</p>
+  <p>LEGAL TERMS</p>
+</footer>
