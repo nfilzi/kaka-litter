@@ -1,55 +1,35 @@
-<form>
+<%= form_tag new_order_path, method: :get do %>
   <!-- PRODUCT CONTAINER -->
   <div class="products-container">
-    <!-- FIRST PRODUCT -->
-    <div class="product">
-      <div class="product-element">
-        <div class="product-image">
-          <%= image_tag "litter_bag.png" %>
+    <% @products.each_with_index do |product, index| %>  
+      <div class="product">
+        <div class="product-element">
+          <div class="product-image">
+            <%= image_tag "#{product.designation}.png" %>
+          </div>
+          <div class="product-specs">
+            <h2><%= product.designation %></h2>
+            <ul>
+              <% product.features.each do |feature|  %>
+                <li><%= feature %></li>
+              <% end %>
+              <li class="price">Unit price: <b>$<%= product.unit_price %></b></li>
+            </ul>
+          </div>
         </div>
-        <div class="product-specs">
-          <h2>Litter Bag of 176oz</h2>
-          <ul>
-            <li>100% mineral</li>
-            <li>Odorless</li>
-            <li>Absorbent</li>
-            <li>Clumping</li>
-          </ul>
-        </div>
-      </div>
-      <div class="qty-selector">
-        <button class="button-left">-</button>
-        <input type="text"></input>
-        <button class="button-right">+</button>
-      </div>
-    </div>
-    <!-- SECOND PRODUCT -->
-    <div class="product">
-      <div class="product-element">
-        <div class="product-image">
-          <%= image_tag "litter_box.png" %>
-        </div>
-        <div class="product-specs">
-          <h2>Box of 6 Bags</h2>
-          <ul>
-            <li>Better storage</li>
-            <li>Better display</li>
-            <li>Easier to pick from</li>
-            <li>Cheaper</li>
-          </ul>
+        <div class="qty-selector">
+          <button class="button-left">-</button>
+            <input type="number" name="order[order_details_attributes][<%= index %>][quantity]" value="0">
+          <button class="button-right">+</button>
         </div>
       </div>
-      <div class="qty-selector">
-        <button class="button-left">-</button>
-        <input type="text"></input>
-        <button class="button-right">+</button>
-      </div>
-    </div>
+      <input type="hidden" name="order[order_details_attributes][<%= index %>][product_id]" value="<%= product.id %>">
+    <% end %>
   </div>
   <div class="order-button-div">
     <button class="order-button">Order Now</button>
   </div>
-</form>
+<% end %>
 <!-- DESCRIPTION -->
 <h1>Krazy Kat Litter</h1>
 <p>

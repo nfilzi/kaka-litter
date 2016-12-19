@@ -21,7 +21,7 @@
               <p class="price">Unit price: <b>$<%= product.unit_price %></b></p>
               <div class="qty-selector">
             <button class="button-left">-</button>
-            <%= order_detail.input :quantity, as: :integer, label: false %>
+            <%= order_detail.input :quantity, as: :integer, label: false, input_html: {value: params[:order][:order_details_attributes][index.to_s][:quantity]} %>
             <button class="button-right">+</button>
           </div>
             </div>
