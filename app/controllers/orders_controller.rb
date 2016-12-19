@@ -1,6 +1,5 @@
 class OrdersController < ApplicationController
-  decorates_assigned :order
-  before_action :set_order_create_update_context, only: [:create, :update]
+  before_action :set_order_context, only: [:create, :update]
   
   def new
     @order      = Order.new
@@ -29,10 +28,10 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:shipping_address, :company_id, :paying_method, :observations, :order_details_attributes => [:product_id, :quantity])
+    params.require(:order).permit(:shipping_address, :company_id, :observations, :order_details_attributes => [:product_id, :quantity])
   end
 
-  def set_order_create_update_context
+  def set_order_context
     @products   = Product.all
     @companies  = current_user.companies
   end
