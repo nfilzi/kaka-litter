@@ -1,19 +1,15 @@
 class OrdersController < ApplicationController
-  before_action :set_order_context, only: [:create, :update]
+  before_action :set_order_context, only: [:new, :create, :update]
   
   def new
     @order      = Order.new
     @order.order_details.build
-    @products   = Product.all
-    @companies  = current_user.companies
   end
 
   def create
-    order_details_attributes = order_params[:order_details_attributes].values
     @order = Order.new(order_params)
-  
-    @order.order_details.build(order_details_attributes)
-    @order.first_order! if current_user.no_orders?
+    @order.company = current_user.company
+    @order.first_order! if current_user.company.no_orders_yet?
     @order.compute_total_price_ht!
 
     if @order.save
@@ -23,16 +19,15 @@ class OrdersController < ApplicationController
       flash[:notice] = "There was an issue with your order. Please try again."
       render 'new'
     end
-    
   end
 
   private
   def order_params
-    params.require(:order).permit(:shipping_address, :company_id, :observations, :order_details_attributes => [:product_id, :quantity])
+    params.require(:order).permit(:shipping_address_id, :observations, :order_details_attributes => [:product_id, :quantity])
   end
 
   def set_order_context
-    @products   = Product.all
-    @companies  = current_user.companies
+    @products           = Product.all
+    @shipping_addresses = current_user.company.shipping_addresses
   end
 end

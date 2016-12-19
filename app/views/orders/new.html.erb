@@ -4,14 +4,12 @@
   <%= f.error_notification %>
 
   <div class="form-inputs" style="width: 600px; margin: 50px auto">
-    <%= f.association :company, required: true, collection: @companies %>
-    <%= f.input :shipping_address, required: true %>
-    <%= f.input :paying_method, collection: order.paying_methods, required: true %>
+    <%= f.association :shipping_address, collection: @shipping_addresses, label_method: :designation, include_blank: false %>
     <%= f.input :observations %>
 
     <br>
-    <%= f.simple_fields_for "order_details" do |order_detail| %>
-      <% @products.each_with_index do |product, index| %>
+    <% @products.each_with_index do |product, index| %>
+      <%= f.simple_fields_for "order_details" do |order_detail| %>
         <div class="product">
           <h3><%= product.designation %></h3>
           <p>Price: <%= product.unit_price %></p>
@@ -21,7 +19,7 @@
             <% end %>
           </ul>
           <%= order_detail.input :quantity, as: :integer %>
-          <%= order_detail.input :product_id, as: :hidden, input_html: {value: product.id} %>
+          <%= order_detail.input :product_id, as: :hidden, input_html: {value: product.id} %>  
         </div>
       <% end %>
     <% end %>
