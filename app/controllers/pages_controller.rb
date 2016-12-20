@@ -4,7 +4,6 @@ class PagesController < ApplicationController
   def home
     @products = Product.all
   end
-
-  def static_components
-  end
 end
+
+

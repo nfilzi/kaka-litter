@@ -8,12 +8,11 @@ class CompaniesController < ApplicationController
     @company.user = current_user
     
     if @company.save
-      # TODO: service to send data to Google Spreadsheet, via a background-job
+      ::GoogleDriveServices::Companies::AddCompanyToSpreadsheetService.new(@company).call
       redirect_to root_path
     else
       render 'new'
-    end
-    
+    end 
   end
 
   private
