@@ -8,4 +8,8 @@ class User < ApplicationRecord
   has_many :shipping_addresses
 
   validates :first_name, :last_name, :phone_number, presence: true
+  
+  def fullname
+    "#{self.first_name} #{self.last_name}"
+  end
 end
