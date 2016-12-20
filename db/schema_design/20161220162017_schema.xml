@@ -38,7 +38,7 @@
     <type label="SET" length="1" sql="SET" quote=""/>
     <type label="Bit" length="0" sql="bit" quote=""/>
   </group>
-</datatypes><table x="86" y="276" name="users">
+</datatypes><table x="73" y="265" name="users">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -73,9 +73,6 @@
 <datatype>TINYINT</datatype>
 <default>NULL</default><relation table="shipping_addresses" row="id" />
 </row>
-<row name="paying_method" null="1" autoincrement="0">
-<datatype>VARCHAR</datatype>
-<default>NULL</default></row>
 <row name="observations" null="1" autoincrement="0">
 <datatype>MEDIUMTEXT</datatype>
 <default>NULL</default></row>
@@ -89,7 +86,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="259" y="20" name="companies">
+<table x="239" y="70" name="companies">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -104,12 +101,9 @@
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
 <row name="billing_address" null="1" autoincrement="0">
-<datatype>TINYINT</datatype>
-<default>NULL</default></row>
-<row name="vat_number" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
-<row name="salesman_email" null="1" autoincrement="0">
+<row name="vat_number" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
