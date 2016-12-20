@@ -4,15 +4,13 @@
       <%= image_tag("kaka_logotype.svg", height: '28') %>
     <% end %>
   </div>
-  <div class="nav-link">
     <% if current_user %>
       <%= link_to destroy_user_session_path, method: :delete do %>
-        Log Out
+        <div class="nav-link">Log Out</div>
       <% end %>
     <% else %>
       <%= link_to new_user_session_path do %>
-        Log In
+        <div class="nav-link">Log In</div>
       <% end %>
     <% end %>
-  </div>
 </nav>
