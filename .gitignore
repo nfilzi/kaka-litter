@@ -9,5 +9,6 @@ public/assets
 # Ignore application configuration
 /config/application.yml
 
-# Ignore config_*.json for Google Drive API config
-/config/initializers/google_drive_api
+# Ignore Google drive API config/initializers/google_drive_api/config_*.json
+config/initializers/google_drive_api/config_dev.json
+config/initializers/google_drive_api/config_prod.json
