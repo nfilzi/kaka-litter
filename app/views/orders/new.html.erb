@@ -1,8 +1,10 @@
 <h1>Fill in your order information</h2>
 
 <div class="modal">
+  <div class="button-container">
+    <button class="close-modal">Close</button>
+  </div>
   <h1>Add an address</h1>
-  <button class="close-modal">Close</button>
   <%= simple_form_for @shipping_address, remote: true do |f| %>
   <div class="form-inputs" style="width: 600px; margin: 0px auto">
     <%= f.input :designation %>
