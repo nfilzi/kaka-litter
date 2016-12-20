@@ -8,7 +8,7 @@
 /** FONTS **/
 @font-face {
   font-family: 'SignPainter';
-  src:url('SignPainter.ttc');
+  src: font-url('SignPainter.ttf') format('truetype');
 }
 
 
@@ -29,6 +29,19 @@ nav {
   text-align: center;
   top: 0px;
   width: 100%
+}
+
+.nav-link {
+  position: absolute;
+  right: 50px;
+  top: 12px;
+}
+
+.nav-link a,
+.nav-link a:hover,
+.nav-link a:visited,
+.nav-link a:active, {
+  color: $red;
 }
 
 h1 {
@@ -267,8 +280,44 @@ div.alert > button {
   margin-bottom: 50px
 }
 
+.open-modal {
+  border-radius: 10px;
+  font-family: "SignPainter";
+  font-size: 30px;
+  height: 45px;
+  margin: 10px 0px;
+  width: 200px;
+}
+
+.modal {
+  background-color: #FFF;
+  border: 1px solid #000;
+  border-radius: 10px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  display: none;
+  overflow: hidden;
+  -webkit-overflow-scrolling: auto;
+  outline: 0;
+  height: 80%;
+  width: 90%;
+  margin: auto
+}
+
 @media screen and (min-width: 550px) {
   .form-inputs {
     min-width: 500px
+  }
+  .modal {
+    width: 70%;
+  }
+  .nav-link {
+    position: absolute;
+    right: 100px;
+    top: 12px;
   }
 }
