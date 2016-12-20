@@ -40,6 +40,24 @@
 <%= content_for(:after_js) do %>
   <script>
 
+    $( document ).ready(function() {
+      var total_price_tag = $(".total-price").find("b");
+      var total_price = parseFloat(total_price_tag.data('total-price'));
+
+      var price0 = parseFloat($(".product-specs").first().find('.price').data('unit-price'));
+      var price1 = parseFloat($(".product-specs").last().find('.price').data('unit-price'));
+
+      var qty0_input = $(".qty-selector").first().find(".order_order_details_quantity").find("input");
+      var qty0 = qty0_input.val();
+
+      var qty1_input = $(".qty-selector").last().find(".order_order_details_quantity").find("input");
+      var qty1 = qty1_input.val();
+
+      total_price = ((price0 * qty0) + (price1 * qty1)).toFixed(2);
+      total_price_tag.data('total-price', total_price);
+      total_price_tag.text(total_price);
+    });
+
     $(".button-left").on("click", function (e) {
       e.preventDefault();
 
@@ -61,7 +79,7 @@
       if (qty > 1) {
         qty = parseFloat(qty) - 1;
       } else {
-        qty = 0
+        qty = 0;
       }
       qty_input.val(qty);
 
@@ -75,7 +93,7 @@
       var qty = qty_input.val();
 
       if (qty == "") {
-        qty = 1
+        qty = 1;
       } else {
         qty = parseFloat(qty) + 1;
       }
