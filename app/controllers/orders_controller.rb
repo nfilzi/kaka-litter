@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   
   def new
     @order      = Order.new
+    @shipping_address = ShippingAddress.new
     @order.order_details.build
   end
 
