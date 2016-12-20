@@ -18,12 +18,12 @@
             </div>
             <div class="product-specs">
               <h2><%= product.designation %></h2>
-              <p class="price">Unit price: <b>$<%= product.unit_price %></b></p>
+              <p data-unit-price="<%= product.unit_price %>" class="price">Unit price: <b>$<%= product.unit_price %></b></p>
               <div class="qty-selector">
-            <button class="button-left">-</button>
-            <%= order_detail.input :quantity, as: :integer, label: false, readonly: true, input_html: {value: params[:order][:order_details_attributes][index.to_s][:quantity]} %>
-            <button class="button-right">+</button>
-          </div>
+                <button class="button-left">-</button>
+                <%= order_detail.input :quantity, as: :integer, label: false, readonly: true, input_html: {value: params[:order][:order_details_attributes][index.to_s][:quantity]} %>
+                <button class="button-right">+</button>
+              </div>
             </div>
           </div>
           <%= order_detail.input :product_id, as: :hidden, input_html: {value: product.id} %>
@@ -32,13 +32,14 @@
     <% end %>
   </div>
   <div class="form-actions">
-    <p class="total-price">Total Price: $<b>75</b></p>
+    <p class="total-price">Total Price: $<b data-total-price="0">0</b></p>
     <%= f.button :submit, "Confirm Order" %>
   </div>
 <% end %>
 
 <%= content_for(:after_js) do %>
   <script>
+
     $(".button-left").on("click", function (e) {
       e.preventDefault();
 
@@ -46,12 +47,24 @@
       var qty_input = button.closest(".qty-selector").find(".order_order_details_quantity").find("input");
       var qty = qty_input.val();
 
+      if (qty > 0) {
+        var total_price_tag = $(".total-price").find("b");
+        var total_price = total_price_tag.data('total-price');
+
+        var price = parseFloat($(this).closest(".product-specs").find('.price').data('unit-price'));
+
+        total_price = (total_price - price).toFixed(2);
+        total_price_tag.data('total-price', total_price);
+        total_price_tag.text(total_price);
+      }
+
       if (qty > 1) {
         qty = parseFloat(qty) - 1;
       } else {
         qty = 0
       }
       qty_input.val(qty);
+
     });
 
     $(".button-right").on("click", function (e) {
@@ -68,6 +81,15 @@
       }
 
       qty_input.val(qty);
+
+      var total_price_tag = $(".total-price").find("b");
+      var total_price = parseFloat(total_price_tag.data('total-price'));
+
+      var price = parseFloat($(this).closest(".product-specs").find('.price').data('unit-price'));
+
+      total_price = (total_price + price).toFixed(2);
+      total_price_tag.data('total-price', total_price);
+      total_price_tag.text(total_price);
     });
   </script>
 <% end %>
