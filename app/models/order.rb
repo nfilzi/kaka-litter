@@ -17,4 +17,8 @@ class Order < ApplicationRecord
   def first_order!
     self.first_order = true
   end
+
+  def first_order?
+    first_order
+  end
 end
