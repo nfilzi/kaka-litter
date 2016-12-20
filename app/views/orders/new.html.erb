@@ -1,10 +1,15 @@
 <h1>Fill in your order information</h2>
 
+<div class="modal">
+  <h1>Add an address</h1>
+  <button class="close-modal">Close</button>
+</div>
+
 <%= simple_form_for @order do |f| %>
   <%= f.error_notification %>
-
   <div class="form-inputs" style="width: 600px; margin: 50px auto">
     <%= f.association :shipping_address, collection: @shipping_addresses, label_method: :designation, include_blank: false %>
+    <button class="open-modal">Add an address</button>
     <%= f.input :observations %>
   </div>
   <br>
@@ -108,6 +113,16 @@
       total_price = (total_price + price).toFixed(2);
       total_price_tag.data('total-price', total_price);
       total_price_tag.text(total_price);
+    });
+
+    $(".open-modal").on("click", function (e) {
+      e.preventDefault();
+      $(".modal").show();
+    });
+
+    $(".close-modal").on("click", function (e) {
+      e.preventDefault();
+      $(".modal").hide();
     });
   </script>
 <% end %>
