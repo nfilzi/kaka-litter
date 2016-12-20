@@ -1,7 +1,7 @@
 module GoogleDriveServices
   module Orders    
     class AddOrderToSpreadsheetService
-      def initialize(company)
+      def initialize(order)
         @order = order
         @google_drive_session = GoogleDrive::Session.from_config(ENV["GOOGLE_DRIVE_JSON_FILEPATH"])
       end

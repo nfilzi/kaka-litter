@@ -14,6 +14,7 @@ class OrdersController < ApplicationController
     @order.compute_total_price_ht!
 
     if @order.save
+      ::GoogleDriveServices::Orders::AddOrderToSpreadsheetService.new(@order).call
       flash[:notice] = "Your order has been issued. You should receive an email shortly!"
       redirect_to root_path
     else
