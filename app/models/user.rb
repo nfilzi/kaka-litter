@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   
-  has_one :company
+  has_one :company, dependent: :destroy
   has_many :shipping_addresses
 
   validates :first_name, :last_name, :phone_number, presence: true
