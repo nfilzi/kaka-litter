@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
+  before_action :current_user_has_company, only: [:new]
   before_action :set_order_context, only: [:new, :create, :update]
-  
+
   def new
     @order      = Order.new
     @shipping_address = ShippingAddress.new
@@ -31,5 +32,10 @@ class OrdersController < ApplicationController
   def set_order_context
     @products           = Product.all
     @shipping_addresses = current_user.company.shipping_addresses
+  end
+
+  def current_user_has_company
+    flash[:alert] = "You haven't registered your company yet. You need to before being able to issue orders."
+    redirect_to new_company_url unless current_user.company
   end
 end
