@@ -49,6 +49,10 @@ nav {
   text-decoration: none;
 }
 
+.logotype {
+  height: 28px
+}
+
 h1 {
   color: $red;
   font-family: "SignPainter";
@@ -339,6 +343,10 @@ div.alert > button {
 }
 
 @media screen and (min-width: 550px) {
+  
+  .logotype {
+    height: 35px
+  }
   .form-inputs {
     min-width: 500px
   }
