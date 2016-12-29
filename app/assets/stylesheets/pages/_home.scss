@@ -76,11 +76,16 @@ a:visited {
   color: $blue
 }
 
-p {
+p,
+ol {
   font-family: "HelveticaNeue-Light", "Helvetica Neue", "Helvetica", sans-serif;
   margin: auto;
   max-width: 500px;
   padding: 0px 20px 20px
+}
+
+ol > li {
+  margin-top: 20px
 }
 
 ul {

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations'}
   root to: 'pages#home'
+  get 'pages/legal' => "pages#legal"
 
   resources :companies, only: [:new, :create]
   resources :orders, only: [:new, :create]
