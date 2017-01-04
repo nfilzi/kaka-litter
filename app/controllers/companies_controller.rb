@@ -9,6 +9,7 @@ class CompaniesController < ApplicationController
     
     if @company.save
       ::GoogleDriveServices::Companies::AddCompanyToSpreadsheetService.new(@company).call
+      ShippingAddress.create(designation: @company.billing_address, company: @company)
       # FIXME according issue #29
       redirect_to root_path
     else
