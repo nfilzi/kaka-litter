@@ -1,4 +1,6 @@
 Rails.application.configure do
+  # Uncomment following line to test sending emails in dev
+  # config.action_mailer.delivery_method = :smtp
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # Settings specified here will take precedence over those in config/application.rb.
