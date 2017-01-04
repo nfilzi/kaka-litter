@@ -35,7 +35,9 @@ class OrdersController < ApplicationController
   end
 
   def current_user_has_company
-    flash[:alert] = "You haven't registered your company yet. You need to before being able to issue orders."
-    redirect_to new_company_url unless current_user.company
+    unless current_user.company
+      flash[:alert] = "You haven't registered your company yet. You need to before being able to issue orders."
+      redirect_to new_company_url 
+    end
   end
 end
