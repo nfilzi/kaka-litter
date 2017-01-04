@@ -16,11 +16,12 @@ module GoogleDriveServices
       def populate_spreadsheet(ws, next_row)
         ws[next_row, 1] = @company.name
         ws[next_row, 2] = @company.vat_number
-        ws[next_row, 3] = @company.phone_number
-        ws[next_row, 4] = @company.billing_address
-        ws[next_row, 5] = @company.user.fullname
-        ws[next_row, 6] = @company.user.email
-        ws[next_row, 7] = @company.created_at.strftime("%m-%d-%Y")
+        # Column 3 used for customer reduction on orders
+        ws[next_row, 4] = @company.phone_number
+        ws[next_row, 5] = @company.billing_address
+        ws[next_row, 6] = @company.user.fullname
+        ws[next_row, 7] = @company.user.email
+        ws[next_row, 8] = @company.created_at.strftime("%m-%d-%Y")
         ws.save
       end
     end
