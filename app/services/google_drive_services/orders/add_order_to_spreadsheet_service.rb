@@ -14,13 +14,19 @@ module GoogleDriveServices
 
       private
       def populate_spreadsheet(ws, next_row)
+        # Extract these in query objects..? => FindOrderProductQuantityByProductId? Weird
+        bag_quantity    = @order.order_details.find_by(product_id: 1).quantity
+        box_quantity    = @order.order_details.find_by(product_id: 2).quantity
+
         ws[next_row, 1] = @order.created_at.strftime("%m-%d-%Y")
         ws[next_row, 2] = @order.company.name
         ws[next_row, 3] = @order.shipping_address.designation
         ws[next_row, 4] = @order.total_price_ht
-        ws[next_row, 5] = @order.company.phone_number
-        ws[next_row, 6] = @order.observations
-        ws[next_row, 7] = @order.first_order? ? "yes" : "no"
+        ws[next_row, 5] = bag_quantity
+        ws[next_row, 6] = box_quantity
+        ws[next_row, 7] = @order.company.phone_number
+        ws[next_row, 8] = @order.observations
+        ws[next_row, 9] = @order.first_order? ? "yes" : "no"
         ws.save
       end
     end
