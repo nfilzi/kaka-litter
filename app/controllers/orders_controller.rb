@@ -16,6 +16,7 @@ class OrdersController < ApplicationController
 
     if @order.save
       ::GoogleDriveServices::Orders::AddOrderToSpreadsheetService.new(@order).call
+      ::Mailers::Orders::SendConfirmationToUser.new(@order, current_user).call
       flash[:notice] = "Your order has been issued. You should receive an email shortly!"
       redirect_to root_path
     else
