@@ -3,7 +3,8 @@ class OrdersController < ApplicationController
   before_action :set_order_context, only: [:new, :create, :update]
 
   def new
-    @order      = Order.new
+    @order                  = Order.new()
+    @order.shipping_address = current_user.company.shipping_addresses.first
     @shipping_address = ShippingAddress.new
     @order.order_details.build
   end
