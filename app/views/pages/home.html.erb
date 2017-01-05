@@ -54,6 +54,12 @@
   <p>KAKA LITTER — 202-555-0154</p>
   <p>CONTACT@KAKA-LITTER.COM</p>
   <p>LEGAL TERMS</p>
+  <%= link_to "https://www.facebook.com/kakalitiere/", target: :blank do %>
+    <%= image_tag("facebook.svg", width: '30', height: '30', class: 'center') %>
+  <% end %>
+  <%= link_to "https://www.instagram.com/kaka.litiere/", target: :blank do %>
+    <%= image_tag("instagram_reverse.svg", width: '30', height: '30', class: 'center') %>
+  <% end %>
 </footer>
 
 <%= content_for(:after_js) do %>

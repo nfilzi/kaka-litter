@@ -49,6 +49,10 @@ nav {
   text-decoration: none;
 }
 
+.logotype {
+  height: 28px
+}
+
 h1 {
   color: $red;
   font-family: "SignPainter";
@@ -72,11 +76,16 @@ a:visited {
   color: $blue
 }
 
-p {
+p,
+ol {
   font-family: "HelveticaNeue-Light", "Helvetica Neue", "Helvetica", sans-serif;
   margin: auto;
   max-width: 500px;
   padding: 0px 20px 20px
+}
+
+ol > li {
+  margin-top: 20px
 }
 
 ul {
@@ -239,6 +248,11 @@ footer > p {
   padding: 10px 20px;
 }
 
+footer > a {
+  display: inline-block;
+  margin: 0px 15px;
+}
+
 /** PRODUCT DIVS **/
 
 .product {
@@ -338,7 +352,16 @@ div.alert > button {
   margin: auto
 }
 
+.price-note {
+  font-style: italic;
+  font-size: 12px
+}
+
 @media screen and (min-width: 550px) {
+  
+  .logotype {
+    height: 35px
+  }
   .form-inputs {
     min-width: 500px
   }
