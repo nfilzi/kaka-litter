@@ -51,9 +51,13 @@
 </div>
 <%= image_tag("france_map.png", width: '300', height: '300', class: 'center') %>
 <footer>
-  <p>KAKA LITTER — 202-555-0154</p>
+  <p>KAKA LITTER</p>
   <p>CONTACT@KAKA-LITTER.COM</p>
-  <p>LEGAL TERMS</p>
+  <p>
+    <%= link_to pages_legal_path do %>
+      LEGAL TERMS
+    <% end %>
+  </p>
   <%= link_to "https://www.facebook.com/kakalitiere/", target: :blank do %>
     <%= image_tag("facebook.svg", width: '30', height: '30', class: 'center') %>
   <% end %>
