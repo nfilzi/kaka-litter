@@ -10,8 +10,10 @@
           <div class="product-specs">
             <h2><%= product.designation %></h2>
             <ul>
-              <% product.features.each do |feature|  %>
-                <li><%= feature %></li>
+              <% if product.features != nil %>
+                <% product.features.each do |feature|  %>
+                  <li><%= feature %></li>
+                <% end %>
               <% end %>
               <li class="price">Unit price: <b>$<%= product.unit_price %></b></li>
             </ul>

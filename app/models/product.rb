@@ -4,7 +4,7 @@ class Product < ApplicationRecord
   has_many :orders, through: :order_details
   
   
-  validates :designation, :unit_price, :features, presence: true
+  validates :designation, :unit_price, presence: true
 
   # FIXME: put that in a decorator, but draper is broken
   # Need to learn how to build my own :D
