@@ -38,8 +38,8 @@ pariente_co.save!
 puts "Companies created!"
 
 puts "Creating products from Kaka Litter's Catalog..."
-litter_bag = Product.create!(designation: "Litter Bag of 176oz", unit_price: 3.4, features: ["100% mineral", "Odorless", "Absorbent", "Clumping"])
-box_of_six = Product.create!(designation: "Box of 6 bags", unit_price: 19.0, features: ["Better storage", "Better display", "Easier to pick from", "Cheaper"])
+litter_bag = Product.create!(designation: "Box of 176 oz", unit_price: 3.4, features: ["Soft & light", "Stays dry on the surface", "Box with pouring spout"])
+box_of_six = Product.create!(designation: "Dislay-box of 6 boxes", unit_price: 19.0, features: [])
 
 puts "Creating orders for both companies..."
 [filzi, pariente].each do |user|
