@@ -10,17 +10,19 @@
           <div class="product-specs">
             <h2><%= product.designation %></h2>
             <ul>
-              <% product.features.each do |feature|  %>
-                <li><%= feature %></li>
+              <% if product.features != nil %>
+                <% product.features.each do |feature|  %>
+                  <li><%= feature %></li>
+                <% end %>
               <% end %>
               <li class="price">Unit price: <b>$<%= product.unit_price %></b></li>
             </ul>
           </div>
         </div>
         <div class="qty-selector">
-          <button class="button-left">-</button>
+          <button class="button-left button-left-<%= index %>">-</button>
             <input type="number" name="order[order_details_attributes][<%= index %>][quantity]" value="0" class="qty-value" readonly="readonly">
-          <button class="button-right">+</button>
+          <button class="button-right button-right-<%= index %>">+</button>
         </div>
       </div>
       <input type="hidden" name="order[order_details_attributes][<%= index %>][product_id]" value="<%= product.id %>">
@@ -51,9 +53,13 @@
 </div>
 <%= image_tag("france_map.png", width: '300', height: '300', class: 'center') %>
 <footer>
-  <p>KAKA LITTER — 202-555-0154</p>
+  <p>KAKA LITTER</p>
   <p>CONTACT@KAKA-LITTER.COM</p>
-  <p>LEGAL TERMS</p>
+  <p>
+    <%= link_to pages_legal_path do %>
+      LEGAL TERMS
+    <% end %>
+  </p>
   <%= link_to "https://www.facebook.com/kakalitiere/", target: :blank do %>
     <%= image_tag("facebook.svg", width: '30', height: '30', class: 'center') %>
   <% end %>
@@ -64,7 +70,24 @@
 
 <%= content_for(:after_js) do %>
   <script>
-    $(".button-left").on("click", function (e) {
+    $(".button-left-0").on("click", function (e) {
+      e.preventDefault();
+
+      var button = $(this);
+      var qty_input = button.closest(".qty-selector").find(".qty-value");
+      var qty = qty_input.val();
+
+      if (qty > 1) {
+        qty = parseFloat(qty) - 1;
+        $(".button-right-0").css("background-color", "#ED1C24");
+        $(".button-right-0").css("border-color", "#ED1C24");
+      } else {
+        qty = 0
+      }
+      qty_input.val(qty);
+    });
+
+    $(".button-left-1").on("click", function (e) {
       e.preventDefault();
 
       var button = $(this);
@@ -79,7 +102,30 @@
       qty_input.val(qty);
     });
 
-    $(".button-right").on("click", function (e) {
+    $(".button-right-0").on("click", function (e) {
+      e.preventDefault();
+
+      var button = $(this);
+      var qty_input = button.closest(".qty-selector").find(".qty-value");
+      var qty = qty_input.val();
+
+      if (qty == "") {
+        qty = 1
+      } else if (qty == 4) {
+        qty = 5;
+        $(this).css("background-color", "grey");
+        $(this).css("border-color", "grey");
+      } else if (qty == 5 ) {
+        qty == 5;
+      }
+      else {
+        qty = parseFloat(qty) + 1;
+      }
+
+      qty_input.val(qty);
+    });
+
+    $(".button-right-1").on("click", function (e) {
       e.preventDefault();
 
       var button = $(this);

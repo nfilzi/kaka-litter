@@ -35,9 +35,9 @@
               <h2><%= product.designation %></h2>
               <p data-unit-price="<%= product.unit_price %>" class="price">Unit price: <b>$<%= product.unit_price %></b></p>
               <div class="qty-selector">
-                <button class="button-left">-</button>
+                <button class="button-left button-left-<%= index %>">-</button>
                 <%= order_detail.input :quantity, as: :integer, label: false, readonly: true, input_html: {value: params[:order][:order_details_attributes][index.to_s][:quantity]} %>
-                <button class="button-right">+</button>
+                <button class="button-right button-right-<%= index %>">+</button>
               </div>
             </div>
           </div>
@@ -69,12 +69,46 @@
       var qty1_input = $(".qty-selector").last().find(".order_order_details_quantity").find("input");
       var qty1 = qty1_input.val();
 
+      if (qty0 == 5) {
+        $(".button-right-0").css("background-color", "grey");
+        $(".button-right-0").css("border-color", "grey");
+      }
+
       total_price = ((price0 * qty0) + (price1 * qty1)).toFixed(2);
       total_price_tag.data('total-price', total_price);
       total_price_tag.text(total_price);
     });
 
-    $(".button-left").on("click", function (e) {
+    $(".button-left-0").on("click", function (e) {
+      e.preventDefault();
+
+      var button = $(this);
+      var qty_input = button.closest(".qty-selector").find(".order_order_details_quantity").find("input");
+      var qty = qty_input.val();
+
+      if (qty > 0) {
+        var total_price_tag = $(".total-price").find("b");
+        var total_price = total_price_tag.data('total-price');
+
+        var price = parseFloat($(this).closest(".product-specs").find('.price').data('unit-price'));
+
+        total_price = (total_price - price).toFixed(2);
+        total_price_tag.data('total-price', total_price);
+        total_price_tag.text(total_price);
+      }
+
+      if (qty > 1) {
+        qty = parseFloat(qty) - 1;
+        $(".button-right-0").css("background-color", "#ED1C24");
+        $(".button-right-0").css("border-color", "#ED1C24");
+      } else {
+        qty = 0;
+      }
+      qty_input.val(qty);
+
+    });
+
+    $(".button-left-1").on("click", function (e) {
       e.preventDefault();
 
       var button = $(this);
@@ -101,7 +135,58 @@
 
     });
 
-    $(".button-right").on("click", function (e) {
+    $(".button-right-0").on("click", function (e) {
+      e.preventDefault();
+
+      var button = $(this);
+      var qty_input = button.closest(".qty-selector").find(".order_order_details_quantity").find("input");
+      var qty = qty_input.val();
+
+      if (qty == "") {
+        qty = 1
+        qty_input.val(qty);
+
+        var total_price_tag = $(".total-price").find("b");
+        var total_price = parseFloat(total_price_tag.data('total-price'));
+
+        var price = parseFloat($(this).closest(".product-specs").find('.price').data('unit-price'));
+
+        total_price = (total_price + price).toFixed(2);
+        total_price_tag.data('total-price', total_price);
+        total_price_tag.text(total_price);
+      } else if (qty == 4) {
+        qty = 5;
+        $(this).css("background-color", "grey");
+        $(this).css("border-color", "grey");
+        qty_input.val(qty);
+
+        var total_price_tag = $(".total-price").find("b");
+        var total_price = parseFloat(total_price_tag.data('total-price'));
+
+        var price = parseFloat($(this).closest(".product-specs").find('.price').data('unit-price'));
+
+        total_price = (total_price + price).toFixed(2);
+        total_price_tag.data('total-price', total_price);
+        total_price_tag.text(total_price);
+      } else if (qty == 5 ) {
+        qty == 5;
+      }
+      else {
+        qty = parseFloat(qty) + 1;
+        qty_input.val(qty);
+
+        var total_price_tag = $(".total-price").find("b");
+        var total_price = parseFloat(total_price_tag.data('total-price'));
+
+        var price = parseFloat($(this).closest(".product-specs").find('.price').data('unit-price'));
+
+        total_price = (total_price + price).toFixed(2);
+        total_price_tag.data('total-price', total_price);
+        total_price_tag.text(total_price);
+      }
+    });
+
+    $(".button-right-1").on("click", function (e) {
       e.preventDefault();
 
       var button = $(this);

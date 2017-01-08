@@ -259,7 +259,7 @@ footer > a {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  margin: 20px;
+  margin: 20px 10px;
 }
 
 .products-container {
@@ -279,6 +279,10 @@ footer > a {
 }
 
 .product-image {
+  width: 110px;
+}
+
+.product-image > img {
   width: 110px;
 }
 
