@@ -248,9 +248,13 @@ footer > p {
   padding: 10px 20px;
 }
 
-footer > a {
+footer a,
+footer a:active,
+footer a:hover,
+footer a:visited {
   display: inline-block;
   margin: 0px 15px;
+  color: $red;
 }
 
 /** PRODUCT DIVS **/
@@ -364,7 +368,7 @@ div.alert > button {
 @media screen and (min-width: 550px) {
   
   .logotype {
-    height: 35px
+    height: 50px
   }
   .form-inputs {
     min-width: 500px
