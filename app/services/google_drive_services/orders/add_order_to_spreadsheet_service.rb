@@ -24,9 +24,10 @@ module GoogleDriveServices
         ws[next_row, 4] = @order.total_price_ht
         ws[next_row, 5] = bag_quantity
         ws[next_row, 6] = box_quantity
-        ws[next_row, 7] = @order.company.phone_number
-        ws[next_row, 8] = @order.observations
-        ws[next_row, 9] = @order.first_order? ? "yes" : "no"
+        ws[next_row, 10] = @order.company.phone_number
+        ws[next_row, 11] = @order.company.user.email
+        ws[next_row, 12] = @order.observations
+        ws[next_row, 13] = @order.first_order? ? "yes" : "no"
         ws.save
       end
     end
