@@ -8,6 +8,8 @@
   <%= simple_form_for @shipping_address, remote: true do |f| %>
   <div class="form-inputs" style="width: 600px; margin: 0px auto">
     <%= f.input :designation %>
+    <%= f.label "Country" %>
+    <%= country_select("shipping_address", "country") %>
   </div>
   <div class="form-actions">
     <%= f.button :submit, "Add Address" %>
@@ -18,7 +20,7 @@
 <%= simple_form_for @order do |f| %>
   <%= f.error_notification %>
   <div class="form-inputs" style="width: 600px; margin: 0px auto">
-    <%= f.association :shipping_address, collection: @shipping_addresses, label_method: :designation, include_blank: false, as: :radio_buttons %>
+    <%= f.association :shipping_address, collection: @shipping_addresses, label_method: :full_address, include_blank: false, as: :radio_buttons %>
     <button class="open-modal">+ Add an address</button>
     <%= f.label "Additional details" %>
     <%= f.input :observations, label: false %>

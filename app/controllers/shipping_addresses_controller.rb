@@ -22,6 +22,6 @@ class ShippingAddressesController < ApplicationController
 
   private
   def shipping_address_params
-    params.require(:shipping_address).permit(:designation, :company_id)    
+    params.require(:shipping_address).permit(:designation, :company_id, :country)    
   end
 end

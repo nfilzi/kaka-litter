@@ -9,7 +9,7 @@ class CompaniesController < ApplicationController
     
     if @company.save
       ::GoogleDriveServices::Companies::AddCompanyToSpreadsheetService.new(@company).call
-      ShippingAddress.create(designation: @company.billing_address, company: @company)
+      ShippingAddress.create(country: @company.country, designation: @company.billing_address, company: @company)
       # FIXME according issue #29
       redirect_to root_path
     else
@@ -19,7 +19,6 @@ class CompaniesController < ApplicationController
 
   private
   def company_params
-    permitted_attributes = [:name, :billing_address, :phone_number, :vat_number, :salesman_email]
-    params.require(:company).permit(permitted_attributes)
+    params.require(:company).permit(:name, :billing_address, :country, :phone_number, :vat_number)
   end
 end
