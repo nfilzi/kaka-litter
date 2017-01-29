@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :legal, :static_components]
 
-  def home
+  def shop
     @products = Product.all
   end
 
