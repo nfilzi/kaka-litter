@@ -238,6 +238,7 @@ button {
 
 footer {
   margin: 0;
+  margin-top: 20px;
   margin-bottom: 20px;
   text-align: center;
   width: 100%
@@ -284,7 +285,8 @@ footer a:visited {
   display: flex;
   margin: auto;
   margin-bottom: 20px;
-  max-width: 500px
+  max-width: 500px;
+  padding: 0px 10px
 }
 
 .product-image {
@@ -302,6 +304,7 @@ footer a:visited {
 .qty-selector {
   display: flex;
   justify-content: center;
+  margin-top: 20px
 }
 
 /** LIST DIV **/

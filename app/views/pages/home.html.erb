@@ -10,21 +10,16 @@
           <div class="product-specs">
             <h2><%= product.designation %></h2>
             <ul>
-              <% if product.features != nil %>
-                <% product.features.each do |feature|  %>
-                  <li><%= feature %></li>
-                <% end %>
-              <% end %>
               <li class="price">Unit price: <b>$<%= product.unit_price %></b></li>
             </ul>
+            <div class="qty-selector">
+              <button class="button-left button-left-<%= index %>">-</button>
+                <input type="number" name="order[order_details_attributes][<%= index %>][quantity]" value="0" class="qty-value" readonly="readonly">
+              <button class="button-right button-right-<%= index %>">+</button>
+            </div>
+            </div>
           </div>
         </div>
-        <div class="qty-selector">
-          <button class="button-left button-left-<%= index %>">-</button>
-            <input type="number" name="order[order_details_attributes][<%= index %>][quantity]" value="0" class="qty-value" readonly="readonly">
-          <button class="button-right button-right-<%= index %>">+</button>
-        </div>
-      </div>
       <input type="hidden" name="order[order_details_attributes][<%= index %>][product_id]" value="<%= product.id %>">
     <% end %>
   </div>
@@ -32,26 +27,6 @@
     <button class="order-button">Order Now</button>
   </div>
 <% end %>
-<!-- DESCRIPTION -->
-<h1>Krazy Kat Litter</h1>
-<p>
-  KAKA is nothing but cat litter, opting for a <b>clear-cut</b> and <b>ultra-natural</b> ethical positioning rather than a generic product.
-</p>
-<h1>Who are we?</h1>
-<p>
-  We are a <b>family-owned company</b> based in <b>Normandy, France</b>. We have been mainly extracting minerals <b>since 1927</b>.
-</p> 
-<p>
-  We are passionate about what we do and always looking for <b>simple solutions</b>. We are committed to use a process that recovers essential components from minerals, assuring a <b>responsible production</b>:
-</p>
-<div class="list-div">
-  <ul class="paragraph">
-    <li>reliable</li>
-    <li>low carbon-footprint</li>
-    <li>bio-compatible</li>
-  </ul>
-</div>
-<%= image_tag("france_map.png", width: '300', height: '300', class: 'center') %>
 <%= render partial: 'shared/footer' %>
 
 <%= content_for(:after_js) do %>
