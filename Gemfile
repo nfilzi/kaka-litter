@@ -19,6 +19,7 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 
 gem 'google_drive'
+gem 'better_errors'
 
 gem "letter_opener", group: :development
 
