@@ -16,6 +16,8 @@ class OrdersController < ApplicationController
     @order.compute_total_price_ht!
 
     if @order.save
+      if @order.country == 'US'
+      end
       ::GoogleDriveServices::Orders::AddOrderToSpreadsheetService.new(@order).call
       ::Mailers::Orders::SendConfirmationToUser.new(@order, current_user).call
       flash[:notice] = "Your order has been issued. You should receive an email shortly!"
