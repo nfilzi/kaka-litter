@@ -1,6 +1,6 @@
 <span class="radio">
   <label for="order_shipping_address_id_<%= shipping_address.id %>">
     <input class="radio_buttons required" type="radio" value="<%= shipping_address.id %>" name="order[shipping_address_id]" id="order_shipping_address_id_<%= shipping_address.id %>">
-    <%= shipping_address.designation %>
+    <%= shipping_address.designation %> - <%= shipping_address.country_name %>
   </label>
 </span>

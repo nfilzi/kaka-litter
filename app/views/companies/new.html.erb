@@ -6,8 +6,11 @@
   <div class="form-inputs">
     <%= f.input :name, required: true %>
     <%= f.input :billing_address, required: true %>
+    <%= f.label "Country" %>
+    <%= country_select("company", "country") %>
     <%= f.input :phone_number, required: true %>
-    <%= f.input :vat_number, required: true %>
+    <%= f.label "VAT number (leave blank if not applicable)" %>
+    <%= f.input :vat_number, label: false %>
   </div>
 
   <div class="form-actions">

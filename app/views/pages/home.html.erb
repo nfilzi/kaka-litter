@@ -1,144 +1,68 @@
-<%= form_tag new_order_path, method: :get do %>
-  <!-- PRODUCT CONTAINER -->
-  <div class="products-container">
-    <% @products.each_with_index do |product, index| %>  
-      <div class="product">
-        <div class="product-element">
-          <div class="product-image">
-            <%= image_tag "#{product.normalized_designation}.png" %>
-          </div>
-          <div class="product-specs">
-            <h2><%= product.designation %></h2>
-            <ul>
-              <% if product.features != nil %>
-                <% product.features.each do |feature|  %>
-                  <li><%= feature %></li>
-                <% end %>
-              <% end %>
-              <li class="price">Unit price: <b>$<%= product.unit_price %></b></li>
-            </ul>
-          </div>
-        </div>
-        <div class="qty-selector">
-          <button class="button-left button-left-<%= index %>">-</button>
-            <input type="number" name="order[order_details_attributes][<%= index %>][quantity]" value="0" class="qty-value" readonly="readonly">
-          <button class="button-right button-right-<%= index %>">+</button>
-        </div>
-      </div>
-      <input type="hidden" name="order[order_details_attributes][<%= index %>][product_id]" value="<%= product.id %>">
-    <% end %>
-  </div>
-  <div class="order-button-div">
-    <button class="order-button">Order Now</button>
-  </div>
-<% end %>
-<!-- DESCRIPTION -->
 <h1>Krazy Kat Litter</h1>
-<p>
-  KAKA is nothing but cat litter, opting for a <b>clear-cut</b> and <b>ultra-natural</b> ethical positioning rather than a generic product.
-</p>
-<h1>Who are we?</h1>
-<p>
-  We are a <b>family-owned company</b> based in <b>Normandy, France</b>. We have been mainly extracting minerals <b>since 1927</b>.
-</p> 
-<p>
-  We are passionate about what we do and always looking for <b>simple solutions</b>. We are committed to use a process that recovers essential components from minerals, assuring a <b>responsible production</b>:
-</p>
-<div class="list-div">
-  <ul class="paragraph">
-    <li>reliable</li>
-    <li>low carbon-footprint</li>
-    <li>bio-compatible</li>
-  </ul>
+<%= image_tag('kaka_kat.png', width: 300, class: 'center') %>
+<p class="center"><b>Kaka</b> : French word for poop. Synonyms : number two, dung.</p>
+<div class="order-button-div">
+  <%= link_to 'pages/shop' do %>
+    <button class="order-button">Go to e-Shop</button>
+  <% end %>
 </div>
-<%= image_tag("france_map.png", width: '300', height: '300', class: 'center') %>
-<footer>
-  <p>KAKA LITTER</p>
-  <p>CONTACT@KAKA-LITTER.COM</p>
-  <p>
-    <%= link_to pages_legal_path do %>
-      LEGAL TERMS
-    <% end %>
-  </p>
-  <%= link_to "https://www.facebook.com/kakalitiere/", target: :blank do %>
-    <%= image_tag("facebook.svg", width: '30', height: '30', class: 'center') %>
+<h1>KAKA - The Concept</h1>
+<p>KAKA is astounding, uncompromising and exacting,
+it doesn’t claim to be anything other than
+what it is.</p>
+<p>KAKA is nothing but cat litter, opting for a clearcut
+and <b>ultra-natural ethical positioning</b> rather than
+generalisations.</p>
+<p>KAKA, unlike the competitors’ traditional products,
+is quite simply:</p>
+<ul>
+  <b>
+    <li>Different</li>
+    <li>Fun</li>
+    <li>Cheeky</li>
+    <li>Natural and free of hang-ups.</li>
+  </b>
+</ul>
+<p><b>After all, why pussyfoot around?</b></p>
+<h1>Who manufactures KAKA ?</h1>
+<p>We are a <b>family-owned company</b>.<br>We have been mainly <b>extracting minerals since
+1927</b>.<br>We are <b>passionate</b> about what we do.</p>
+<p>We look for <b>simple solutions</b> and control our
+entire value chain.</p>
+<p>At the heart of commitment you will find
+the use of a <b>process that recovers essential
+components from minerals</b> and the assurance
+of <b>responsible production</b>: reliable, low-carbon
+footprint and <b>bio-compatible</b>.</p>
+<h1>Where does Kaka come from ?</h1>
+<p><b>Normandy</b>. KAKA “Krazy Kat Litter” is produced
+at our site from clay that is rigorously selected
+<b>in our quarries</b>.</p>
+<%= image_tag('france_map.png', width: 300, class: 'center') %>
+<h1>KAKA’s advantages</h1>
+<p>“KAKA, Krazy Kat Litter ” is competitive in terms
+of its price and specific qualities:</p>
+<ul>
+  <li>Clumping</li>
+  <li>Absorbent</li>
+  <li>Odourless</li>
+  <li><b>100% mineral</b>, natural, free of chemical additives</li>
+  <li><b>Soft and light</b> because of its tighter and more
+compact grain size</li>
+  <li>Stays <b>dry on the surface</b></li>
+  <li>Attractive <b>beige colour</b></li>
+  <li>Sold in 5 kg paper <b>carrier bags</b>.</li>
+</ul>
+<%= image_tag('box_of_176_oz.png', width: 150, class: 'center') %>
+<h1>The conditionning of KAKA</h1>
+<ul>
+  <li>Each bag <b>contains 176 oz</b>.</li>
+  <li>Each box contains 6x5 bags of litter.</li>
+</ul>
+<%= image_tag('display-box_of_6_boxes.png', width: 150, class: 'center') %>
+<div class="order-button-div">
+  <%= link_to 'pages/shop' do %>
+    <button class="order-button">Go to e-Shop</button>
   <% end %>
-  <%= link_to "https://www.instagram.com/kaka.litiere/", target: :blank do %>
-    <%= image_tag("instagram_reverse.svg", width: '30', height: '30', class: 'center') %>
-  <% end %>
-</footer>
-
-<%= content_for(:after_js) do %>
-  <script>
-    $(".button-left-0").on("click", function (e) {
-      e.preventDefault();
-
-      var button = $(this);
-      var qty_input = button.closest(".qty-selector").find(".qty-value");
-      var qty = qty_input.val();
-
-      if (qty > 1) {
-        qty = parseFloat(qty) - 1;
-        $(".button-right-0").css("background-color", "#ED1C24");
-        $(".button-right-0").css("border-color", "#ED1C24");
-      } else {
-        qty = 0
-      }
-      qty_input.val(qty);
-    });
-
-    $(".button-left-1").on("click", function (e) {
-      e.preventDefault();
-
-      var button = $(this);
-      var qty_input = button.closest(".qty-selector").find(".qty-value");
-      var qty = qty_input.val();
-
-      if (qty > 1) {
-        qty = parseFloat(qty) - 1;
-      } else {
-        qty = 0
-      }
-      qty_input.val(qty);
-    });
-
-    $(".button-right-0").on("click", function (e) {
-      e.preventDefault();
-
-      var button = $(this);
-      var qty_input = button.closest(".qty-selector").find(".qty-value");
-      var qty = qty_input.val();
-
-      if (qty == "") {
-        qty = 1
-      } else if (qty == 4) {
-        qty = 5;
-        $(this).css("background-color", "grey");
-        $(this).css("border-color", "grey");
-      } else if (qty == 5 ) {
-        qty == 5;
-      }
-      else {
-        qty = parseFloat(qty) + 1;
-      }
-
-      qty_input.val(qty);
-    });
-
-    $(".button-right-1").on("click", function (e) {
-      e.preventDefault();
-
-      var button = $(this);
-      var qty_input = button.closest(".qty-selector").find(".qty-value");
-      var qty = qty_input.val();
-
-      if (qty == "") {
-        qty = 1
-      } else {
-        qty = parseFloat(qty) + 1;
-      }
-
-      qty_input.val(qty);
-    });
-  </script>
-<% end %>
+</div>
+<%= render partial: 'shared/footer' %>
