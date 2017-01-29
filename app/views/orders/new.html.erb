@@ -19,8 +19,9 @@
   <%= f.error_notification %>
   <div class="form-inputs" style="width: 600px; margin: 0px auto">
     <%= f.association :shipping_address, collection: @shipping_addresses, label_method: :designation, include_blank: false, as: :radio_buttons %>
-    <button class="open-modal">Add an address</button>
-    <%= f.input :observations %>
+    <button class="open-modal">+ Add an address</button>
+    <%= f.label "Additional details" %>
+    <%= f.input :observations, label: false %>
   </div>
   <br>
   <% @products.each_with_index do |product, index| %>
@@ -48,7 +49,7 @@
   </div>
   <div class="form-actions">
     <p class="total-price center">Total Price: $<b data-total-price="0">0</b></p>
-    <p class="price-note">Note: This price does not include any special reduction you may have. The final price will be sent to you in a proforma invoice shortly after you confirm your order.</p>
+    <p class="price-note">Note: This standard price does not include any special reduction you may have. The final price will be sent to you in a proforma invoice shortly after you confirm your order.</p>
     <%= f.button :submit, "Confirm Order" %>
   </div>
 <% end %>
