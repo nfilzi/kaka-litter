@@ -292,6 +292,14 @@ footer a:visited {
   padding: 0px 10px
 }
 
+.product-list-element {
+  display: table-row
+}
+
+.product-list-element td {
+  padding: 10px
+}
+
 .product-image {
   width: 110px;
 }

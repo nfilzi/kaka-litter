@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'pages/legal' => "pages#legal"
   get 'pages/shop' => "pages#shop"
 
+  resources :products, except: [:new, :destroy]
   resources :companies, only: [:new, :create]
   resources :orders, only: [:new, :create]
   resources :shipping_addresses, only: [:create]
