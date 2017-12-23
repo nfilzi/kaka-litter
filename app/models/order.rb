@@ -1,15 +1,15 @@
 class Order < ApplicationRecord
-  belongs_to :company
+  belongs_to :user
 
   has_many :order_details, inverse_of: :order
   belongs_to :shipping_address
-  
+
   accepts_nested_attributes_for :order_details
-  
-  validates :company, :shipping_address, :total_price_ht, presence: true
-  
+
+  validates :shipping_address, :total_price_ht, presence: true
+
   def compute_total_price_ht!
-    self.total_price_ht = order_details.reduce(0) do |total, order_detail| 
+    self.total_price_ht = order_details.reduce(0) do |total, order_detail|
       total += order_detail.quantity * order_detail.product.unit_price
     end
   end
