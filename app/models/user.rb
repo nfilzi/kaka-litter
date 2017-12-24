@@ -3,12 +3,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  
-  has_one :company, dependent: :destroy
+
   has_many :shipping_addresses
+  has_many :orders
 
   validates :first_name, :last_name, :phone_number, presence: true
-  
+
   def fullname
     "#{self.first_name} #{self.last_name}"
   end
