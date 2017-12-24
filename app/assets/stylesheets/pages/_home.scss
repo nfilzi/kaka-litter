@@ -75,11 +75,21 @@ h2,
 
 .home-3-pics {
   display: flex; 
-  align-items: center; 
+  align-items: flex-start; 
   justify-content: space-between; 
   flex-wrap: wrap; 
   max-width: 800px;
   margin: auto
+}
+
+.home-3-pics div {
+  width: 250px
+}
+
+.home-3-pics .description {
+  font-family: 'SignPainter';
+  color: $red;
+  font-size: 26px
 }
 
 @media screen and (max-width: 800px) {
@@ -241,8 +251,7 @@ button {
 .order-button-div {
   display: flex;
   justify-content: center;
-  margin: 30px;
-  margin-bottom: 50px
+  margin: 10px 30px 50px 30px
 }
 
 .qty-selector input {

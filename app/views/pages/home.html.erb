@@ -1,10 +1,18 @@
 <h1>Krazy Kat Litter</h1>
 <div class="home-3-pics">
-  <%= image_tag('box_of_176_oz.png', width: 150, class: 'center') %>
-  <%= image_tag('kaka_kat.png', width: 250, class: 'center') %>
-  <%= image_tag('display-box_of_6_boxes.png', width: 150, class: 'center') %>
+  <div>
+    <%= image_tag('box_of_176_oz.png', height: 200, class: 'center') %>
+    <p class="center"><b class="description"><%= @box.designation %></b><br>$<%= @box.unit_price %></p>
+  </div>
+  <div>
+    <%= image_tag('kaka_kat.png', width: 250, class: 'center') %>
+  </div>
+  <div>
+    <%= image_tag('display-box_of_6_boxes.png', height: 200, class: 'center') %>
+    <p class="center"><b class="description"><%= @display_box.designation %></b><br>$<%= @display_box.unit_price %></p>
+  </div>
 </div>
-<p class="center"><b>Kaka</b> : French word for poop. Synonyms : number two, dung.</p>
+<p class="center"><b>Kaka</b>: French word for poop.<br><i>Synonyms: number two, dung.</i></p>
 <div class="order-button-div">
   <%= link_to 'pages/shop' do %>
     <button class="order-button">Go to e-Shop</button>
