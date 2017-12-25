@@ -41,7 +41,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    permitted_attributes = [:first_name, :last_name, :email, :phone_number]
+    permitted_attributes = [:first_name, :last_name, :email, :phone_number, :vat_number]
     devise_parameter_sanitizer.permit(:sign_up, keys: permitted_attributes)
   end
 
@@ -51,9 +51,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  def after_sign_up_path_for(resource)
-    new_company_path
-  end
+  # def after_sign_up_path_for(resource)
+  #   new_company_path
+  # end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
