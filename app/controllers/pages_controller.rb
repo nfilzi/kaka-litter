@@ -7,6 +7,9 @@ class PagesController < ApplicationController
 
   def legal
   end
+
+  def success
+  end
 end
 
 

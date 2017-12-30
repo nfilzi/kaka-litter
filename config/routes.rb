@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'pages/legal' => "pages#legal"
   get 'pages/shop' => "pages#shop"
+  get 'pages/success' => "pages#success"
 
   resources :products, except: [:new, :destroy]
   resources :companies, only: [:new, :create]
