@@ -1,18 +1,17 @@
 class OrdersController < ApplicationController
-  before_action :current_user_has_company, only: [:new]
   before_action :set_order_context, only: [:new, :create, :update]
 
   def new
     @order                  = Order.new()
-    @order.shipping_address = current_user.company.shipping_addresses.first
-    @shipping_address = ShippingAddress.new
+    @order.shipping_address = current_user.shipping_addresses.first
+    @shipping_address       = ShippingAddress.new
     @order.order_details.build
   end
 
   def create
     @order = Order.new(order_params)
-    @order.company = current_user.company
-    @order.first_order! if current_user.company.no_orders_yet?
+    @order.user = current_user
+    @order.first_order! if current_user.no_orders_yet?
     @order.compute_total_price_ht!
 
     if @order.save
@@ -28,18 +27,13 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:shipping_address_id, :observations, :order_details_attributes => [:product_id, :quantity])
+    params.require(:order).permit(:shipping_address_id, :observations,
+      :order_details_attributes => [:product_id, :quantity]
+    )
   end
 
   def set_order_context
     @products           = Product.all
-    @shipping_addresses = current_user.company.shipping_addresses
-  end
-
-  def current_user_has_company
-    unless current_user.company
-      flash[:alert] = "You haven't registered your company yet. You need to before being able to issue orders."
-      redirect_to new_company_url 
-    end
+    @shipping_addresses = current_user.shipping_addresses
   end
 end
