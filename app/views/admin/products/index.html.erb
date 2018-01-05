@@ -4,7 +4,7 @@
     <tr class="product-list-element">
       <td><%= product.designation %></td>
       <td class="price">$<%= product.unit_price %></td>
-      <td><%= link_to edit_product_path(product) do %>Edit product<% end %></td>
+      <td><%= link_to edit_admin_product_path(product) do %>Edit product<% end %></td>
     </tr>
   <% end %>
 </table>
