@@ -1,6 +1,4 @@
-<h1>Editing Product</h1>
-
-<%= simple_form_for @product do |f| %>
+<%= simple_form_for([:admin, product]) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
