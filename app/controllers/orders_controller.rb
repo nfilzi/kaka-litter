@@ -18,11 +18,15 @@ class OrdersController < ApplicationController
       ::GoogleDriveServices::Orders::AddOrderToSpreadsheetService.new(@order).call
       ::Mailers::Orders::SendConfirmationToUser.new(@order, current_user).call
       flash[:notice] = "Your order has been issued. You should receive an email shortly!"
-      redirect_to root_path
+      redirect_to order_success_path(@order)
     else
       flash[:notice] = "There was an issue with your order. Please try again."
       render 'new'
     end
+  end
+
+  def success
+    @order = Order.find_by(id: params[:id])
   end
 
   private
