@@ -6,7 +6,7 @@ class CompaniesController < ApplicationController
   def create
     @company = Company.new(company_params)
     @company.user = current_user
-    
+
     if @company.save
       ::GoogleDriveServices::Companies::AddCompanyToSpreadsheetService.new(@company).call
       ShippingAddress.create(country: @company.country, designation: @company.billing_address, company: @company)
@@ -14,7 +14,7 @@ class CompaniesController < ApplicationController
       redirect_to root_path
     else
       render 'new'
-    end 
+    end
   end
 
   private
