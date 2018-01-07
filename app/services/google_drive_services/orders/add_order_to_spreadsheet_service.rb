@@ -22,23 +22,26 @@ module GoogleDriveServices
 
       private
       def populate_spreadsheet(ws, next_row)
-        bag = Product.find_by(sku: "litter-bag")
-        box = Product.find_by(sku: "box-of-six-litter-bags")
+        box         = Product.find_by(sku: "litter-box")
+        display_box = Product.find_by(sku: "display-box")
 
-        bag_quantity    = @order.order_details.find_by(product_id: bag.id).quantity
-        box_quantity    = @order.order_details.find_by(product_id: box.id).quantity
+        box_quantity          = @order.order_details.find_by(product_id: box.id).quantity
+        display_box_quantity  = @order.order_details.find_by(product_id: display_box.id).quantity
 
         ws[next_row, 1] = @order.created_at.strftime("%m-%d-%Y")
-        ws[next_row, 2] = @order.user.fullname
-        ws[next_row, 3] = @order.shipping_address.designation
-        ws[next_row, 4] = @order.shipping_address.country_name
-        ws[next_row, 5] = @order.total_price_ht
-        ws[next_row, 6] = bag_quantity
-        ws[next_row, 7] = box_quantity
-        ws[next_row, 11] = @order.user.phone_number
-        ws[next_row, 12] = @order.user.email
-        ws[next_row, 13] = @order.observations
-        ws[next_row, 14] = @order.first_order? ? "yes" : "no"
+        # ws[next_row, 2] = @order.user.fullname
+        ws[next_row, 2] = @order.shipping_address.designation
+        ws[next_row, 3] = @order.shipping_address.country_name
+        ws[next_row, 4] = box_quantity
+        ws[next_row, 5] = display_box_quantity
+        ws[next_row, 6] = @order.total_price_ht
+        ws[next_row, 7] = box.unit_price
+        ws[next_row, 8] = display_box.unit_price
+        # Column 9 used for transport price
+        ws[next_row, 10] = @order.user.phone_number
+        ws[next_row, 11] = @order.user.email
+        ws[next_row, 12] = @order.observations
+        ws[next_row, 13] = @order.first_order? ? "yes" : "no"
         ws.save
       end
     end

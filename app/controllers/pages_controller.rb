@@ -2,8 +2,8 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :legal, :static_components]
 
   def home
-    @box          = Product.find_by(sku: "litter-bag")
-    @display_box  = Product.find_by(sku: "box-of-six-litter-bags")
+    @box          = Product.find_by(sku: "litter-box")
+    @display_box  = Product.find_by(sku: "display-box")
   end
 
   def shop
