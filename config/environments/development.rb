@@ -1,8 +1,13 @@
 Rails.application.configure do
-  # Uncomment following line to test sending emails in dev
-  # config.action_mailer.delivery_method = :smtp
+  # Uncomment following line to test emails in dev with letter_opener
   config.action_mailer.delivery_method = :letter_opener
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  # Uncomment following line to test sending emails in dev with postmark
+  # config.action_mailer.delivery_method     = :postmark
+  # config.action_mailer.postmark_settings   = { api_key: ENV['KAKA_LITTER_POSTMARK_API_KEY'] }
+  config.action_mailer.default_url_options =  { host: 'localhost', port: 3000 }
+
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on

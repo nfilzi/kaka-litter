@@ -22,11 +22,12 @@ gem 'google_drive'
 gem 'better_errors'
 
 gem "letter_opener", group: :development
+gem 'postmark-rails'
 
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
-  
+
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'
