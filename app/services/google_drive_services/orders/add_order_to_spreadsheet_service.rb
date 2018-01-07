@@ -39,9 +39,10 @@ module GoogleDriveServices
         ws[next_row, 8] = display_box.unit_price
         # Column 9 used for transport price
         ws[next_row, 10] = @order.user.phone_number
-        ws[next_row, 11] = @order.user.email
-        ws[next_row, 12] = @order.observations
-        ws[next_row, 13] = @order.first_order? ? "yes" : "no"
+        ws[next_row, 11] = @order.user.fullname
+        ws[next_row, 12] = @order.user.email
+        ws[next_row, 13] = @order.observations
+        ws[next_row, 14] = @order.first_order? ? "yes" : "no"
         ws.save
       end
     end
