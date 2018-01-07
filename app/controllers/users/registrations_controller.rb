@@ -10,7 +10,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    # TODO GoogleAPIService.new(resource).call
+    ::GoogleDriveServices::Users::AddToSpreadsheetService.new(resource).call
   end
 
   # GET /resource/edit
