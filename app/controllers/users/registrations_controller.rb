@@ -9,8 +9,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super
-    ::GoogleDriveServices::Users::AddToSpreadsheetService.new(resource).call
+    super do |resource|
+      if resource.persisted?
+        ::GoogleDriveServices::Users::AddToSpreadsheetService.new(resource).call
+      end
+    end
   end
 
   # GET /resource/edit
